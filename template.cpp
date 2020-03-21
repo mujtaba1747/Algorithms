@@ -3,26 +3,26 @@
 // https://www.linkedin.com/in/syed-mujtaba
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds;
 using namespace std;
 #define int             long long
 #define ld              long double
 #define ll              long long
-#define vi              vector < int >
 #define pb              push_back
-#define mk              make_pair
+#define mp              make_pair
 #define fi              first
 #define se              second
-#define f               first
-#define s               second
 #define mod             1000000007 // 1e9 + 7
 #define inf             1000000007 // 1e9 + 7
 #define MAX             10000007   // 1e7 + 7
 #define test            int t; cin>>t; while(t--)
 #define eps             1e-6
-#define forn(i, n)      for (int i = 0; i < int(n); i++)
 #define fast_io         ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define basic           ll NN; cin >> NN; vector < int >  a(NN); for(ll i = 0;i < NN;i++) cin >> a[i];
-
+#define tree            tree <int, null_type, less <int>, rb_tree_tag, tree_order_statistics_node_update>
+#define N 300005
+#define mt make_tuple
 // int fact[1000007]={0};
 // int spf[(int)(1e6)];
 // bool prime[(int)((1e7) + 20)];
@@ -35,12 +35,13 @@ using namespace std;
 // int ncr(int n,int r) {int res=1; res=fact[n]; res=(res*(xyp(fact[r],mod-2)))%mod; res=(res*(xyp(fact[n-r],mod-2)))%mod; return res;}
 // int npr(int n,int r) {int res=1; res=fact[n]; res=(res*(xyp(fact[n-r],mod-2)))%mod; return res; }
 // bool isp(int a){if(a == 2)return true;if(a == 1)return false;for(int x= 2; x <= sqrt(a) + 1; x++)if(a % x == 0)return false;return true;}
-// int add(int a, int b){return (a%mod + b%mod)%mod;}
+// int add(int a, int b){return (a%mod + b%mod + mod)%mod;}
 // int sub(int a, int b){return (a%mod - b%mod + mod)%mod;}
-// int mul(int a, int b){return ((a%mod)*(b%mod))%mod;}
+// int mul(int a, int b){return ((a%mod)*(b%mod) + mod)%mod;}
 // freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout);
 // mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count()); 
-int32_t main()
+signed main()
 {
 	fast_io
+	
 }
