@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-// Prime Factorisation in O(log(n))
+// Prime Factorisation in O(sqrt(n))
 map < int, int > factorize(int n) 
 {
 	int count = 0;
