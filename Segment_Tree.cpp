@@ -65,7 +65,7 @@ struct SegTree
         	merge(t[v], t[2*v], t[2*v + 1]);
 		}
 	}
-	data query(int v, int tl, int tr, int l, int r)
+	data pquery(int v, int tl, int tr, int l, int r)
 	{
 	    if (l > r) 
 	        return base;
@@ -73,14 +73,14 @@ struct SegTree
 	    {
 	        return t[v];
 	    }
-    	int tm = (tl + tr) / 2;
-    	data temp;
-    	data L = query(v*2, tl, tm, l, min(r, tm));
-    	data R = query(v*2+1, tm+1, tr, max(l, tm+1), r); 
-    	merge(temp, L, R);
-    	return temp;
+    	    int tm = (tl + tr) / 2;
+    	    data temp;
+    	    data L = pquery(v*2, tl, tm, l, min(r, tm));
+    	    data R = pquery(v*2+1, tm+1, tr, max(l, tm+1), r); 
+    	    merge(temp, L, R);
+    	    return temp;
 	}
-	void update(int v, int tl, int tr, int pos, data new_val)
+	void pupdate(int v, int tl, int tr, int pos, data new_val)
 	{
 	    if (tl == tr)
 	    {
@@ -90,14 +90,22 @@ struct SegTree
 	    {
 	       	int tm = (tl + tr) / 2;
 	       	if(pos <= tm)
-	           	update(v*2, tl, tm, pos, new_val);
+	           	pupdate(v*2, tl, tm, pos, new_val);
 	       	else
-	           	update(v*2+1, tm+1, tr, pos, new_val);
+	           	pupdate(v*2+1, tm+1, tr, pos, new_val);
         	merge(t[v], t[2*v], t[2*v + 1]);
 	    }
 	}
+	void update(int pos, data new_val)
+	{
+		pupdate(1, 1, N, pos, new_val);
+	}
+	data query(int l, int r)
+	{
+		return pquery(1, 1, N, l, r);
+	}
 };
-void solve()
+void Test()
 {
 	vector < data > b;
 	int n;
@@ -107,10 +115,31 @@ void solve()
 		cin >> b[i].ele;
 	SegTree s;
 	s.init(b);
+	int q;
+	cin >> q;
+	while(q--)
+	{
+		int x;
+		cin >> x;
+		if(x == 1)
+		{
+			int pos, val;
+			cin >> pos >> val;
+			data dt;
+			dt.ele = val;
+			s.update(pos, dt);
+		}
+		else
+		{
+			int L, R;
+			cin >> L >> R;
+			cout << s.query(L, R).ele << "\n";
+		}
+	}
 }
 signed main()
 {
     fast_io
-    solve();
+    Test();
     return 0;       
 }
