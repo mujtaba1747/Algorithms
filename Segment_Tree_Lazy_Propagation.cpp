@@ -44,7 +44,7 @@ struct SegTree
 	{
 		N = b.size();
 		a = b;
-		base.ele = 0;  // can change // identity element of function
+		base.ele = MAX;  // can change // identity element of function
 		laze.ele = 0;
 		t.resize(4 * N + 5);
 		clazy.assign(4 * N + 5, false);
@@ -89,26 +89,26 @@ struct SegTree
 		t[v] = lazy[v];
 		// t[v] += (r - l + 1)*(lazy[v]);
 		clazy[v] = false;
-		lazy[v] = base;
+		lazy[v].ele = 0; // To be handled carefully
 	}
 	data rquery(int v, int tl, int tr, int l, int r)
 	{
-		if(clazy[v])
-		{
-			propagate(v, tl, tr);
-		}
+	    if(clazy[v])
+	    {
+		propagate(v, tl, tr);
+	    }
 	    if (l > r) 
 	        return base;
 	    if (l == tl && r == tr)
 	    {
 	        return t[v];
 	    }
-    	int tm = (tl + tr) / 2;
-    	data temp;
-    	data L = rquery(v*2, tl, tm, l, min(r, tm));
-    	data R = rquery(v*2+1, tm+1, tr, max(l, tm+1), r); 
-    	merge(temp, L, R);
-    	return temp;
+    	    int tm = (tl + tr) / 2;
+	    data temp;
+	    data L = rquery(v*2, tl, tm, l, min(r, tm));
+	    data R = rquery(v*2+1, tm+1, tr, max(l, tm+1), r); 
+	    merge(temp, L, R);
+            return temp;
 	}
 	data pquery(int v, int tl, int tr, int pos)
 	{
@@ -126,12 +126,12 @@ struct SegTree
 	}
 	void rupdate(int v, int tl, int tr, int l, int r, data new_val)
 	{
-		if(clazy[v])
-		{
-			propagate(v, tl, tr);
-		}
-		if(l > r)
-			return;
+	    if(clazy[v])
+	    {
+		propagate(v, tl, tr);
+            }
+	    if(l > r)
+		return;
 	    if (l == tl && r == tr)
 	    {
 	       	clazy[v] = true;
@@ -149,10 +149,10 @@ struct SegTree
 	}
 	void pupdate(int v, int tl, int tr, int pos, data new_val)
 	{
-		if(clazy[v])
-		{
-			propagate(v, tl, tr);
-		}
+	    if(clazy[v])
+	    {
+		propagate(v, tl, tr);
+	    }
 	    if (tl == tr)
 	    {
 	    	clazy[v] = true;
