@@ -88,6 +88,7 @@ struct SegTree
 		// handle
 		t[v] = lazy[v];
 		// t[v] += (r - l + 1)*(lazy[v]);
+		// t[v].ele += lazy[v];
 		clazy[v] = false;
 		lazy[v].ele = 0; // To be handled carefully
 	}
