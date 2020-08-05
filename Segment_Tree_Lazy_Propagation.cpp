@@ -70,9 +70,9 @@ struct SegTree
 		else
 		{
 			int tm = (tl + tr) / 2;
-       		build(v*2, tl, tm);
-        	build(v*2+1, tm+1, tr);
-        	merge(t[v], t[2*v], t[2*v + 1]);
+       			build(v*2, tl, tm);
+        		build(v*2+1, tm+1, tr);
+        		merge(t[v], t[2*v], t[2*v + 1]);
 		}
 	}
 	// Handle Propagation Appropriately
