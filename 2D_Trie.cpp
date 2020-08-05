@@ -3,13 +3,17 @@ using namespace std;
 #define MAXN 200061
 struct TRIE
 {
-	int trie[MAXN][26];
-	int en[MAXN];
+	// int trie[MAXN][26];
+	vector < vector < int > > trie;
+	vector < int > en;
+	// int en[MAXN];
 	int state;
 	TRIE()
 	{
-		memset(en, 0, sizeof(en));
-		memset(trie, 0, sizeof(trie));
+		// memset(en, 0, sizeof(en));
+		// memset(trie, 0, sizeof(trie));
+		trie.resize(MAXN, vector < int > (26));
+		en.resize(MAXN);
 		state = 0;
 	}
 	void add(string word)
