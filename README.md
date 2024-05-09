@@ -1,2 +1,2 @@
 # Algorithms
-Data structures & Algorithms Implementations that I regularly use in competitive programming
+Data structures & Algorithms implementations that I regularly use in competitive programming
